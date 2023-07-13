@@ -1,7 +1,9 @@
+import BooksCard from "../components/ui/BooksCard";
+
 const Home = () => {
   return (
     <div>
-      <h1>this is home</h1>
+      <BooksCard></BooksCard>
     </div>
   );
 };
