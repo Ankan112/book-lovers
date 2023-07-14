@@ -3,60 +3,70 @@
     "Title": "To Kill a Mockingbird",
     "Author": "Harper Lee",
     "Genre": "Fiction",
-    "PublicationDate": "1960-07-11"
+    "PublicationDate": "1960-07-11",
+    "Review": []
   },
   {
     "Title": "1984",
     "Author": "George Orwell",
     "Genre": "Fiction",
-    "PublicationDate": "1949-06-08"
+    "PublicationDate": "1949-06-08",
+    "Review": []
   },
   {
     "Title": "Pride and Prejudice",
     "Author": "Jane Austen",
     "Genre": "Fiction",
-    "PublicationDate": "1813-01-28"
+    "PublicationDate": "1813-01-28",
+    "Review": []
   },
   {
     "Title": "The Great Gatsby",
     "Author": "F. Scott Fitzgerald",
     "Genre": "Fiction",
-    "PublicationDate": "1925-04-10"
+    "PublicationDate": "1925-04-10",
+    "Review": []
   },
   {
     "Title": "The Catcher in the Rye",
     "Author": "J.D. Salinger",
     "Genre": "Fiction",
-    "PublicationDate": "1951-07-16"
+    "PublicationDate": "1951-07-16",
+    "Review": []
   },
   {
     "Title": "The Hobbit",
     "Author": "J.R.R. Tolkien",
     "Genre": "Fantasy",
-    "PublicationDate": "1937-09-21"
+    "PublicationDate": "1937-09-21",
+    "Review": []
   },
   {
     "Title": "The Hunger Games",
     "Author": "Suzanne Collins",
     "Genre": "Young Adult",
-    "PublicationDate": "2008-09-14"
+    "PublicationDate": "2008-09-14",
+    "Review": []
   },
   {
     "Title": "The Chronicles of Narnia: The Lion, the Witch, and the Wardrobe",
     "Author": "C.S. Lewis",
     "Genre": "Fantasy",
-    "PublicationDate": "1950-10-16"
+    "PublicationDate": "1950-10-16",
+    "Review": []
   },
   {
     "Title": "Harry Potter and the Sorcerer's Stone",
     "Author": "J.K. Rowling",
     "Genre": "Fantasy",
-    "PublicationDate": "1997-06-26"
+    "PublicationDate": "1997-06-26",
+    "Review": []
   },
   {
     "Title": "The Lord of the Rings: The Fellowship of the Ring",
     "Author": "J.R.R. Tolkien",
     "Genre": "Fantasy",
-    "PublicationDate": "1954-07-29"
+    "PublicationDate": "1954-07-29",
+    "Review": []
   }
 ]

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Header = () => {
   return (
     <div className="navbar bg-base-100">
@@ -24,51 +26,40 @@ const Header = () => {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Item 1</a>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
+              <Link to="/all-books">All Books</Link>
             </li>
             <li>
-              <a>Item 3</a>
+              <Link to="/new-book">Add New Book</Link>
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+        <a className="btn btn-ghost normal-case text-xl">Book Lovers</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a>Item 1</a>
-          </li>
-          <li tabIndex={0}>
-            <details>
-              <summary>Parent</summary>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </details>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a>Item 3</a>
+            <Link to="/all-books">All Books</Link>
+          </li>
+          <li>
+            <Link to="/new-book">Add New Book</Link>
           </li>
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <ul className="menu menu-horizontal px-1">
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+          <li>
+            <Link to="/sign-up">Sign up</Link>
+          </li>
+        </ul>
       </div>
     </div>
   );
