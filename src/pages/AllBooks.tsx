@@ -1,27 +1,24 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { IBook, Inputs } from "../types/commonTypes";
+import { useGetBooksQuery } from "../redux/features/books/bookApi";
 
 const AllBooks = () => {
-  //! dummy data start
-
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    fetch("../../../public/books.json")
-      .then((res) => res.json())
-      .then((data) => setData(data));
-  }, []);
-
-  //! dummy data end
+  const { data, isLoading } = useGetBooksQuery(undefined, {
+    refetchOnMountOrArgChange: true,
+    pollingInterval: 30000,
+  });
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    // formState: { errors },
   } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+
+  if (isLoading) {
+    <p>Loading...</p>;
+  }
 
   return (
     <div>
@@ -43,15 +40,15 @@ const AllBooks = () => {
           {/* all books start */}
           <div className="w-11/12 mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 my-10">
-              {data.map((book: IBook, index) => (
-                <div key={index} className="card bg-base-100 shadow-xl">
+              {data?.data.map((book: IBook) => (
+                <div key={book._id} className="card bg-base-100 shadow-xl">
                   <div className="card-body">
-                    <h2 className="card-title">{book?.Title}</h2>
-                    <p>{book?.Author}</p>
-                    <p>{book?.Genre}</p>
-                    <p>{book?.PublicationDate}</p>
+                    <h2 className="card-title">{book?.title}</h2>
+                    <p>{book?.author}</p>
+                    <p>{book?.genre}</p>
+                    <p>{book?.publicationYear}</p>
                     <div className="card-actions justify-end">
-                      <Link to={`/book-details/${book.Title}`}>
+                      <Link to={`/book-details/${book?._id}`}>
                         <button className="btn btn-primary">
                           View Details
                         </button>

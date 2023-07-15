@@ -1,32 +1,29 @@
-import { useState, useEffect } from "react";
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { Link } from "react-router-dom";
+import { useGetBooksQuery } from "../../redux/features/books/bookApi";
+import { IBook } from "../../types/commonTypes";
 
 const BooksCard = () => {
-  //! dummy data start
-
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    fetch("../../../public/books.json")
-      .then((res) => res.json())
-      .then((data) => setData(data));
-  }, []);
-
-  //! dummy data end
+  const { data } = useGetBooksQuery(undefined, {
+    refetchOnMountOrArgChange: true,
+    pollingInterval: 3000,
+  });
 
   return (
     <div className="w-11/12 mx-auto">
       <h1>Book sections</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 my-10">
-        {data.map((book, index) => (
-          <div key={index} className="card bg-base-100 shadow-xl">
+        {data?.data.slice(0, 10).map((book: IBook) => (
+          <div key={book._id} className="card bg-base-100 shadow-xl">
             <div className="card-body">
-              <h2 className="card-title">{book?.Title}</h2>
-              <p>{book?.Author}</p>
-              <p>{book?.Genre}</p>
-              <p>{book?.PublicationDate}</p>
+              <h2 className="card-title">{book?.title}</h2>
+              <p>{book?.author}</p>
+              <p>{book?.genre}</p>
+              <p>{book?.publicationYear}</p>
               <div className="card-actions justify-end">
-                <Link to={`/book-details/${book.Title}`}>
+                <Link to={`/book-details/${book._id}`}>
                   <button className="btn btn-primary">View Details</button>
                 </Link>
               </div>
