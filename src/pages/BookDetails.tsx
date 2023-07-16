@@ -5,10 +5,14 @@ import {
   useGetSingleBookQuery,
 } from "../redux/features/books/bookApi";
 import swal from "sweetalert";
+import BookReview from "../components/ui/BookReview";
 
 const BookDetails = () => {
   const { id } = useParams();
-  const { data } = useGetSingleBookQuery(id);
+  const { data } = useGetSingleBookQuery(id, {
+    refetchOnMountOrArgChange: true,
+    pollingInterval: 3000,
+  });
   const navigate = useNavigate();
   const [deleteBook] = useDeleteBookMutation(undefined);
   // const handleDelete = () => {
@@ -48,7 +52,7 @@ const BookDetails = () => {
             <p>{data?.data.genre}</p>
             <p>{data?.data.publicationYear}</p>
             <div className="card-actions justify-end">
-              <Link to={`/book-details/${data?.data._id}`}>
+              <Link to={`/edit-book/${data?.data._id}`}>
                 <button className="btn btn-primary">Edit</button>
               </Link>
             </div>
@@ -60,6 +64,7 @@ const BookDetails = () => {
           </div>
         </div>
       </div>
+      <BookReview id={id}></BookReview>
     </div>
   );
 };

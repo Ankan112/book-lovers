@@ -23,17 +23,11 @@ const NewBook = () => {
       book: { ...data, review: [] },
     };
     addNewBook(result);
-    // swal({
-    //   title: "Are you sure?",
-    //   text: "Are you sure that you want to leave this page?",
-    //   icon: "warning",
-    //   dangerMode: true,
-    // })
     void swal("Good Job!", "Your book has been added!", "success");
     navigate("/");
   };
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center h-screen">
       <div>
         <h1 className="text-2xl font-medium text-center my-4">Add New book</h1>
         <form onSubmit={handleSubmit(onSubmit)}>

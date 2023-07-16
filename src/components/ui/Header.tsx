@@ -1,6 +1,17 @@
 import { Link } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
+import { auth } from "../../firebase/firebase";
+import { signOut } from "firebase/auth";
+import { setUser } from "../../redux/features/user/userSlice";
 
 const Header = () => {
+  const { user } = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
+  const handleLogOut = () => {
+    signOut(auth).then(() => {
+      dispatch(setUser(null));
+    });
+  };
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -31,9 +42,11 @@ const Header = () => {
             <li>
               <Link to="/all-books">All Books</Link>
             </li>
-            <li>
-              <Link to="/new-book">Add New Book</Link>
-            </li>
+            {user.email && (
+              <li>
+                <Link to="/new-book">Add New Book</Link>
+              </li>
+            )}
           </ul>
         </div>
         <a className="btn btn-ghost normal-case text-xl">Book Lovers</a>
@@ -46,19 +59,30 @@ const Header = () => {
           <li>
             <Link to="/all-books">All Books</Link>
           </li>
-          <li>
-            <Link to="/new-book">Add New Book</Link>
-          </li>
+          {user.email && (
+            <li>
+              <Link to="/new-book">Add New Book</Link>
+            </li>
+          )}
         </ul>
       </div>
       <div className="navbar-end">
         <ul className="menu menu-horizontal px-1">
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/sign-up">Sign up</Link>
-          </li>
+          {!user.email && (
+            <>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+              <li>
+                <Link to="/sign-up">Sign up</Link>
+              </li>
+            </>
+          )}
+          {user.email && (
+            <button onClick={handleLogOut} className="btn btn-primary">
+              Log out
+            </button>
+          )}
         </ul>
       </div>
     </div>

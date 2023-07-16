@@ -2,8 +2,10 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { IBook, Inputs } from "../types/commonTypes";
 import { useGetBooksQuery } from "../redux/features/books/bookApi";
+import { useAppSelector } from "../redux/hook";
 
 const AllBooks = () => {
+  const { user } = useAppSelector((state) => state.user);
   const { data, isLoading } = useGetBooksQuery(undefined, {
     refetchOnMountOrArgChange: true,
     pollingInterval: 30000,
@@ -103,9 +105,11 @@ const AllBooks = () => {
               </div>
             </div>
             <div className="mt-8">
-              <Link to="/new-book">
-                <button className="btn btn-neutral">Add New Book</button>
-              </Link>
+              {user.email && (
+                <Link to="/new-book">
+                  <button className="btn btn-neutral">Add New Book</button>
+                </Link>
+              )}
             </div>
           </ul>
         </div>

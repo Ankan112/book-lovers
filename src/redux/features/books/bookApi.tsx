@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { IFormInputs } from "../../../pages/NewBook";
 import { api } from "../../api/apiSlice";
 
@@ -24,14 +25,22 @@ const bookApi = api.injectEndpoints({
       }),
       invalidatesTags: ["delete"],
     }),
-    //   postComment: builder.mutation({
-    //     query: ({ id, data }) => ({
-    //       url: `/comment/${id}`,
-    //       method: 'POST',
-    //       body: data,
-    //     }),
-    //     invalidatesTags: ['comments'],
-    //   }),
+    updateBook: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `/books/book/${id}`,
+        method: "PATCH",
+        body: data,
+      }),
+      invalidatesTags: ["update"],
+    }),
+    postComment: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `/books/review/${id}`,
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["comments"],
+    }),
     //   getComment: builder.query({
     //     query: (id) => `/comment/${id}`,
     //     providesTags: ['comments'],
@@ -44,4 +53,6 @@ export const {
   useGetSingleBookQuery,
   useAddNewBookMutation,
   useDeleteBookMutation,
+  useUpdateBookMutation,
+  usePostCommentMutation,
 } = bookApi;
