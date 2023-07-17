@@ -106,9 +106,23 @@ const AllBooks = () => {
             </div>
             <div className="mt-8">
               {user.email && (
-                <Link to="/new-book">
-                  <button className="btn btn-neutral">Add New Book</button>
-                </Link>
+                <>
+                  <Link to="/new-book">
+                    <button className="btn btn-neutral">Add New Book</button>
+                  </Link>{" "}
+                  <br />
+                  <Link className="" to="/wishlist">
+                    <button className="btn btn-neutral mt-3">
+                      My wishlist
+                    </button>
+                  </Link>
+                  <br />
+                  <Link className="" to="/currently-reading">
+                    <button className="btn btn-neutral mt-3">
+                      Currently Reading
+                    </button>
+                  </Link>
+                </>
               )}
             </div>
           </ul>
