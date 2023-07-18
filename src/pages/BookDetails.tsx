@@ -60,10 +60,18 @@ const BookDetails = () => {
   return (
     <div className="h-screen">
       <div className="flex justify-center items-center mt-20">
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card w-96 bg-base-100 shadow-xl image-full">
+          <figure>
+            <img
+              src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=600"
+              alt="Shoes"
+            />
+          </figure>
           <div className="card-body">
             <div className="flex justify-between items-center">
-              <h2 className="card-title">{data?.data.title}</h2>
+              <h2 className="card-title font-bold text-2xl">
+                {data?.data.title}
+              </h2>
               <div>
                 <div className="flex items-center">
                   <button
@@ -75,9 +83,13 @@ const BookDetails = () => {
                 </div>
               </div>
             </div>
-            <p>{data?.data.author}</p>
-            <p>{data?.data.genre}</p>
-            <p>{data?.data.publicationYear}</p>
+            <p className="font-medium text-xl">Author: {data?.data.author}</p>
+            <p className="font-normal text-lg -mt-2">
+              Genre: {data?.data.genre}
+            </p>
+            <p className="font-normal text-lg -mt-2">
+              Publication Year: {data?.data.publicationYear}
+            </p>
             <div className="flex">
               <div className="card-actions justify-end">
                 <Link to={`/edit-book/${data?.data._id}`}>

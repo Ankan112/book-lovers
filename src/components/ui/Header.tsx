@@ -13,7 +13,7 @@ const Header = () => {
     });
   };
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-gray-200">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -53,14 +53,14 @@ const Header = () => {
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li>
+          <li className="text-lg font-semibold">
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="text-lg font-semibold">
             <Link to="/all-books">All Books</Link>
           </li>
           {user.email && (
-            <li>
+            <li className="text-lg font-semibold">
               <Link to="/new-book">Add New Book</Link>
             </li>
           )}
@@ -70,10 +70,10 @@ const Header = () => {
         <ul className="menu menu-horizontal px-1">
           {!user.email && (
             <>
-              <li>
+              <li className="text-lg font-semibold">
                 <Link to="/login">Login</Link>
               </li>
-              <li>
+              <li className="text-lg font-semibold">
                 <Link to="/sign-up">Sign up</Link>
               </li>
             </>

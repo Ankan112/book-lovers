@@ -51,14 +51,39 @@ const AllBooks = () => {
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col items-center mt-10">
           {/* search box section start */}
-          <div>
+          {/* <div>
             <form onSubmit={handleSubmit(onSubmit)}>
-              {/* register your input into the hook by invoking the "register" function */}
               <input
                 defaultValue="searchResult"
                 {...register("searchResult")}
               />
               <input type="submit" />
+            </form>
+          </div> */}
+          <div className="form-control">
+            <form onSubmit={handleSubmit(onSubmit)} className="input-group">
+              <input
+                type="text"
+                placeholder="Search…"
+                className="input input-bordered"
+                {...register("searchResult")}
+              />
+              <button type="submit" className="btn btn-square">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+              </button>
             </form>
           </div>
           {/* search box section end */}
@@ -66,12 +91,29 @@ const AllBooks = () => {
           <div className="w-11/12 mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 my-10">
               {data?.data?.map((book: IBook) => (
-                <div key={book._id} className="card bg-base-100 shadow-xl">
+                <div
+                  key={book._id}
+                  className="card bg-base-100 shadow-xl image-full"
+                >
+                  <figure>
+                    <img
+                      src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=600"
+                      alt="Shoes"
+                    />
+                  </figure>
                   <div className="card-body">
-                    <h2 className="card-title">{book?.title}</h2>
-                    <p>{book?.author}</p>
-                    <p>{book?.genre}</p>
-                    <p>{book?.publicationYear}</p>
+                    <h2 className="card-title font-bold text-2xl">
+                      {book?.title}
+                    </h2>
+                    <p className="font-medium text-xl">
+                      Author: {book?.author}
+                    </p>
+                    <p className="font-normal text-lg -mt-2">
+                      Genre: {book?.genre}
+                    </p>
+                    <p className="font-normal text-lg -mt-2">
+                      Publication Year: {book?.publicationYear}
+                    </p>
                     <div className="card-actions justify-end">
                       <Link to={`/book-details/${book?._id}`}>
                         <button className="btn btn-primary">
