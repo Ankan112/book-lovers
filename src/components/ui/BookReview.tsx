@@ -3,12 +3,6 @@ import {
   useGetSingleBookQuery,
   usePostCommentMutation,
 } from "../../redux/features/books/bookApi";
-// const dummyComments = [
-//   "Bhalo na",
-//   "Ki shob ghori egula??",
-//   "Eta kono product holo ??",
-//   "200 taka dibo, hobe ??",
-// ];
 
 type IProps = {
   id: string;
@@ -49,7 +43,6 @@ const BookReview = ({ id }: IProps) => {
               onSubmit={handleSubmit}
             >
               <textarea
-                // className="min-h-[30px] border-4 outline-none rounded-lg w-[200px] px-2"
                 className="textarea textarea-bordered textarea-xs w-full max-w-xs"
                 placeholder="Your Review..."
                 onChange={handleChange}
