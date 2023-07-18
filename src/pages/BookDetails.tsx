@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {
@@ -13,7 +14,7 @@ import { addToCurrentlyRead } from "../redux/features/currenltyRead/currentlyRea
 
 const BookDetails = () => {
   const { id } = useParams();
-  const { data } = useGetSingleBookQuery(id, {
+  const { data } = useGetSingleBookQuery(id!, {
     refetchOnMountOrArgChange: true,
     pollingInterval: 3000,
   });
@@ -29,7 +30,7 @@ const BookDetails = () => {
       });
 
       if (willDelete) {
-        deleteBook(id);
+        deleteBook(id!);
         void swal(
           "Deleted!",
           "Your imaginary file has been deleted!",
@@ -113,7 +114,7 @@ const BookDetails = () => {
           </div>
         </div>
       </div>
-      <BookReview id={id}></BookReview>
+      <BookReview id={id!}></BookReview>
     </div>
   );
 };

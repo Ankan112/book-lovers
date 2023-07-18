@@ -1,4 +1,4 @@
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useAddNewBookMutation } from "../redux/features/books/bookApi";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
@@ -8,8 +8,9 @@ export interface IFormInputs {
   author: string;
   genre: string;
   publicationYear: string;
-  review: [];
+  review?: [];
 }
+
 const NewBook = () => {
   const [addNewBook] = useAddNewBookMutation();
   const navigate = useNavigate();
@@ -18,10 +19,15 @@ const NewBook = () => {
     formState: { errors },
     handleSubmit,
   } = useForm<IFormInputs>();
-  const onSubmit: SubmitHandler<IFormInputs> = (data) => {
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const onSubmit = (data: any) => {
     const result = {
       book: { ...data, review: [] },
     };
+
+    // const result: IFormInputs = { ...data, review: [] };
+    // console.log(result);
     addNewBook(result);
     void swal("Good Job!", "Your book has been added!", "success");
     navigate("/");

@@ -12,12 +12,13 @@ import { IFormInputs } from "./NewBook";
 
 const EditBook = () => {
   const { id } = useParams();
-  const { data } = useGetSingleBookQuery(id);
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const { data } = useGetSingleBookQuery(id!);
   const [updateBook] = useUpdateBookMutation();
   const navigate = useNavigate();
   const {
     register,
-    formState: { errors },
+    // formState: { errors },
     handleSubmit,
   } = useForm<IFormInputs>();
   const onSubmit: SubmitHandler<IFormInputs> = (data) => {

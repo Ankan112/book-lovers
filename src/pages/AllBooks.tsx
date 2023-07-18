@@ -25,7 +25,7 @@ const AllBooks = () => {
     <p>Loading...</p>;
   }
 
-  const { genre } = useAppSelector((state) => state.book);
+  // const { genre } = useAppSelector((state) => state.book);
   const dispatch = useAppDispatch();
 
   // let booksData;

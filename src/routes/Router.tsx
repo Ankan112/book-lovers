@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import MainLayout from "../layout/MainLayout";
 import Home from "../pages/Home";
 import AllBooks from "../pages/AllBooks";
 import NewBook from "../pages/NewBook";
@@ -11,11 +10,12 @@ import EditBook from "../pages/EditBook";
 import PrivateRoute from "./PrivateRoute";
 import Wishlist from "../pages/Wishlist";
 import CurrentlyRead from "../pages/CurrentlyRead";
+import App from "../App";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainLayout></MainLayout>,
+    element: <App></App>,
     children: [
       {
         path: "/",
@@ -75,6 +75,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+
   {
     path: "*",
     element: <NotFound></NotFound>,

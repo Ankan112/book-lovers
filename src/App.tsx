@@ -1,9 +1,11 @@
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/firebase";
-import Home from "./pages/Home";
 import { setLoading, setUser } from "./redux/features/user/userSlice";
 import { useAppDispatch } from "./redux/hook";
 import { useEffect } from "react";
+import Header from "./components/ui/Header";
+import Footer from "./components/ui/Footer";
+import { Outlet } from "react-router-dom";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -21,7 +23,9 @@ function App() {
   }, [dispatch]);
   return (
     <>
-      <Home></Home>
+      <Header></Header>
+      <Outlet></Outlet>
+      <Footer></Footer>
     </>
   );
 }

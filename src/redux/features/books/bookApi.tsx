@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { IFormInputs } from "../../../pages/NewBook";
 import { api } from "../../api/apiSlice";
 
 const bookApi = api.injectEndpoints({
@@ -11,7 +10,7 @@ const bookApi = api.injectEndpoints({
       query: (id: string) => `/books/book/${id}`,
     }),
     addNewBook: builder.mutation({
-      query: (data: IFormInputs) => ({
+      query: (data) => ({
         url: "/books/create-new-book",
         method: "POST",
         body: data,
